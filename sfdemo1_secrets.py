@@ -25,7 +25,7 @@ def load_data(session):
     snow_df_co2 = snow_df_co2.limit(10)
 
     # Convert Snowpark DataFrames to Pandas DataFrames for Streamlit
-    #snow_df_co2 = snow_df_co2.to_pandas()
+    snow_df_co2 = snow_df_co2.to_pandas()
 
     col1, col2 = st.columns(2)
     with st.container():
