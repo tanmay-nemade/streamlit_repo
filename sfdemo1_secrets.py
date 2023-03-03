@@ -10,7 +10,6 @@ st.header("Snowflake Monitoring Framework")
 
 
 def create_session_object():
-   
     connection_parameters = st.secrets["snowflake"]
     st.write(
     session = Session.builder.configs(connection_parameters).create()
