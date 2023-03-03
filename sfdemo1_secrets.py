@@ -11,10 +11,10 @@ st.header("Snowflake Monitoring Framework")
 
 def create_session_object():
    
-    with open('config.json') as f:
-        connection_parameters = json.load(f)
-        session = Session.builder.configs(connection_parameters).create()
-        return session
+    def create_session_object():
+    connection_parameters = st.secrets["snowflake"]
+    session = Session.builder.configs(connection_parameters).create()
+    return session
 
 
 # Create Snowpark DataFrames that loads data from Knoema: Environmental Data Atlas
