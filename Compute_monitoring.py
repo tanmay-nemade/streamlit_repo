@@ -47,7 +47,7 @@ def wh_data(session):
         with col1:
             st.markdown("**:blue[Monthly Credit Consumtpion - Table]**")
             st.dataframe(monthly_df)
-            st.markdown("**:blue[Warehouse  Credit Consumtpion - Table]**')
+            st.markdown("**:blue[Warehouse  Credit Consumtpion - Table]**")
             st.dataframe(snow_df_co2)
             
                        
