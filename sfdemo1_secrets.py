@@ -30,12 +30,12 @@ def load_data(session):
     col1, col2 = st.columns(2)
     with st.container():
         with col1:
-            st.subheader('All Time Top 10 Credit Consuming Warehouses')
+            st.write('Top 10 Credit Consuming Warehouses - Table')
             st.dataframe(snow_df_co2)
                        
             
         with col2:
-            st.write('Graphical Representation')
+            st.write('Top 10 Credit Consuming Warehouses - Graph')
             st.bar_chart(snow_df_co2,x="WAREHOUSE_NAME")
             #edited_df = st.experimental_data_editor(snow_df_co2)                  
             
