@@ -35,6 +35,7 @@ def load_data(session):
                        
             
         with col2:
+            st.subheader('')
             st.bar_chart(snow_df_co2,x="WAREHOUSE_NAME")
             #edited_df = st.experimental_data_editor(snow_df_co2)                  
             
