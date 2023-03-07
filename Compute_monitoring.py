@@ -79,7 +79,7 @@ def wh_data(session):
             
             if selection:
                 st.write("You selected:")
-                json_selected_row = st.json(selection["selected_rows"])
+                #json_selected_row = st.json(selection["selected_rows"])
                 #st.write(json_selected_row)
                 
             st.markdown("**:blue[Warehouse  Credit Consumtpion - Table]**")
