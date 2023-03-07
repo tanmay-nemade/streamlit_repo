@@ -48,7 +48,7 @@ def load_data(session):
     with st.container():
         with col1:
             st.subheader('CO2 Emissions by Country')
-            st.dataframe(pd_df_co2)
+            st.dataframe(snow_df_co2)
     
 
 if __name__ == "__main__":
