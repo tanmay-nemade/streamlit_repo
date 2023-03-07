@@ -22,24 +22,26 @@ def create_session_object():
       "user": "mathavale",
       "password": "Infosys123",
       "role": "accountadmin",
-      "warehouse": "compute_wh"
+      "warehouse": "compute_wh",
+      "database" : "snowflake",
+      "schema" : "account_usage"
     }
     session = Session.builder.configs(connection_parameters).create()
     #print(session.sql('select current_warehouse(), current_database(), current_schema()').collect())
     return session
 
 # Add header and a subheader
-st.header("Knoema: Environment Data Atlas")
-st.subheader("Powered by Snowpark for Python and Snowflake Data Marketplace | Made with Streamlit")
+#st.header("Knoema: Environment Data Atlas")
+#st.subheader("Powered by Snowpark for Python and Snowflake Data Marketplace | Made with Streamlit")
   
 # Create Snowpark DataFrames that loads data from Knoema: Environmental Data Atlas
 def load_data(session):
     # CO2 Emissions by Country
-    session.sql("USE SCHEMA SNOWFLAKE.ACCOUNT_USAGE;").collect()
-    snow_df_co2 = session.table("SNOWFLAKE.ACCOUNT_USAGE.WAREHOUSE_METERING_HISTORY")
+    #session.sql("USE SCHEMA SNOWFLAKE.ACCOUNT_USAGE;").collect()
+    snow_df_co2 = session.table("SNOWFLAKE.ACCOUNT_USAGE.WAREHOUSE_METERING_HISTORY").collect()
     
     # Convert Snowpark DataFrames to Pandas DataFrames for Streamlit
-    pd_df_co2  = snow_df_co2.to_pandas()
+    #pd_df_co2  = snow_df_co2.to_pandas()
     
     # Use columns to display the three dataframes side-by-side along with their headers
     col1, col2 = st.columns(2)
