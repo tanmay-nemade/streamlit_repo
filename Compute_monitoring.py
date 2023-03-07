@@ -53,9 +53,9 @@ def wh_data(session):
                        
             
         with col2:
-            st.markdown("**:blue[Monthly Credit Consumtpion - Graph]**")
+            st.markdown("**:red[Monthly Credit Consumtpion - Graph]**")
             st.bar_chart(monthly_df,x="Year-Month",y="Total Credit Consumption")
-            st.markdown("**:blue[Warehouse Credit Consumtpion - Graph]**")
+            st.markdown("**:red[Warehouse Credit Consumtpion - Graph]**")
             st.bar_chart(snow_df_co2,x="Warehouse Name",y="Total Credit Consumption")
             #edited_df = st.experimental_data_editor(snow_df_co2)                  
             
