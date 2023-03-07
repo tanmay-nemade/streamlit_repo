@@ -18,10 +18,9 @@ def create_session_object():
 
 # Create Snowpark DataFrames that loads data from Knoema: Environmental Data Atlas
 def wh_data(session):
-    # CO2 Emissions by Country
+    
     raw_wh_df =   session.sql("SELECT WAREHOUSE_NAME,SUM(CREDITS_USED) AS TOTAL_CREDITS FROM SNOWFLAKE.ACCOUNT_USAGE.WAREHOUSE_METERING_HISTORY GROUP BY WAREHOUSE_NAME ORDER BY TOTAL_CREDITS DESC;")
 
-    
     pd_raw_wh_df = raw_wh_df.to_pandas()
 
     st.dataframe(pd_raw_wh_df)
