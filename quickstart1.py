@@ -36,7 +36,7 @@ st.subheader("Powered by Snowpark for Python and Snowflake Data Marketplace | Ma
 def load_data(session):
     # CO2 Emissions by Country
     session.sql("USE SCHEMA SNOWFLAKE.ACCOUNT_USAGE;").collect()
-    snow_df_co2 = session.table("SNOWFLAKE.ACCOUNT_USAGE_WAREHOUSE_METERING_HISTORY")
+    snow_df_co2 = session.table("SNOWFLAKE.ACCOUNT_USAGE.WAREHOUSE_METERING_HISTORY")
     
     # Convert Snowpark DataFrames to Pandas DataFrames for Streamlit
     pd_df_co2  = snow_df_co2.to_pandas()
