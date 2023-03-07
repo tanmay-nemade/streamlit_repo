@@ -74,12 +74,14 @@ def wh_data(session):
             pd_monthly_df = pd.DataFrame(monthly_df.collect())
             selection = aggrid_interactive_table(df = pd_monthly_df)
             st.write(selection)
+            
             st.write("---------------------------")
+            
             if selection:
                 st.write("You selected:")
-                st.json(selection["selected_rows"])
-                #st.json(selection["selected_rows"][0])
-                #st.write(['selected_rows'][0].("Year-Month"))
+                json_selected_row = st.json(selection["selected_rows"])
+                st.write(json_selected_row)
+                
             st.markdown("**:blue[Warehouse  Credit Consumtpion - Table]**")
             st.dataframe(snow_df_co2,use_container_width=True)
             
