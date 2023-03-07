@@ -36,7 +36,7 @@ def load_data(session):
     snow_df_co2 = session.table("SNOWFLAKE.ACCOUNT_USAGE.WAREHOUSE_METERING_HISTORY").collect()
     
     # Convert Snowpark DataFrames to Pandas DataFrames for Streamlit
-    pd_df_co2  = pd.to_pandas(snow_df_co2)
+    pd_df_co2  = st.to_pandas(snow_df_co2)
     
     st.write(pd_df_co2)
     
