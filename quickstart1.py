@@ -16,7 +16,7 @@ def load_data(session):
                          .select(col("WAREHOUSE_NAME"),col("CREDITS_USED"))
     
     # Convert Snowpark DataFrames to Pandas DataFrames for Streamlit
-    pd_df_co2  = snow_df_co2.to_pandas()
+    pd_df_co2  = pd.DataFrame(snow_df_co2.collect())
     
     st.write(pd_df_co2)
     
