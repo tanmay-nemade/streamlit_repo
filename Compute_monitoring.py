@@ -76,8 +76,9 @@ def wh_data(session):
             if selection:
                 st.write("You selected:")
                 st.json(selection["selected_rows"])
-                st.json(selection["selected_rows"][0])
-                st.write(['selected_rows'][0]["Year-Month"])
+                st.json(selection["selected_rows"][_selectedRowNodeInfo][nodeId]
+                #st.json(selection["selected_rows"][0])
+                #st.write(['selected_rows'][0]["Year-Month"])
             st.markdown("**:blue[Warehouse  Credit Consumtpion - Table]**")
             st.dataframe(snow_df_co2,use_container_width=True)
             
