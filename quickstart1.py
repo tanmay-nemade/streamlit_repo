@@ -33,10 +33,10 @@ def create_session_object():
   
 # Create Snowpark DataFrames that loads data from Knoema: Environmental Data Atlas
 def load_data(session):
-    snow_df_co2 = session.table("SNOWFLAKE.ACCOUNT_USAGE.WAREHOUSE_METERING_HISTORY").collect()
+    snow_df_co2 = session.table("SNOWFLAKE.ACCOUNT_USAGE.WAREHOUSE_METERING_HISTORY")
     
     # Convert Snowpark DataFrames to Pandas DataFrames for Streamlit
-    pd_df_co2  = st.to_pandas(snow_df_co2)
+    pd_df_co2  = snow_df_co2.to_pandas()
     
     st.write(pd_df_co2)
     
