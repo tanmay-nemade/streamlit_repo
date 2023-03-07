@@ -5,6 +5,8 @@ import pandas as pd
 import streamlit as st
 from datetime import datetime
 from snowflake.snowpark.types import DecimalType
+from st_aggrid import AgGrid, GridOptionsBuilder
+from st_aggrid.shared import GridUpdateMode
 
 
 st.set_page_config(layout="wide")
@@ -16,6 +18,28 @@ def create_session_object():
     session = Session.builder.configs(connection_parameters).create()
     return session
 
+
+def aggrid_interactive_table(df: pd.DataFrame):
+    """Creates an st-aggrid interactive table based on a dataframe.
+    Args:
+        df (pd.DataFrame]): Source dataframe
+    Returns:
+        dict: The selected row
+    """
+    options = GridOptionsBuilder.from_dataframe(
+        df, enableRowGroup=True, enableValue=True, enablePivot=True
+    )
+    options.configure_side_bar()
+    options.configure_selection("single")
+    selection = AgGrid(
+        df,
+        enable_enterprise_modules=True,
+        gridOptions=options.build(),
+        theme="light",
+        update_mode=GridUpdateMode.MODEL_CHANGED,
+        allow_unsafe_jscode=True,
+    )
+    return selection
 
 # Create Snowpark DataFrames that loads data from Knoema: Environmental Data Atlas
 def wh_data(session):
@@ -48,6 +72,7 @@ def wh_data(session):
             st.markdown("**:blue[Monthly Credit Consumtpion - Table]**")
             st.dataframe(monthly_df,use_container_width=True)
             pd_monthly_df = pd.DataFrame(monthly_df.collect())
+            selection = aggrid_interactive_table(df = pd_monthly_df)
             st.markdown("**:blue[Warehouse  Credit Consumtpion - Table]**")
             st.dataframe(snow_df_co2,use_container_width=True)
             
@@ -58,7 +83,8 @@ def wh_data(session):
             st.bar_chart(monthly_df,x="Year-Month",y="Total Credit Consumption")
             st.markdown("**:red[Warehouse Credit Consumtpion - Graph]**")
             st.bar_chart(snow_df_co2,x="Warehouse Name",y="Total Credit Consumption")
-            #edited_df = st.experimental_data_editor(snow_df_co2)                  
+            #edited_df = st.experimental_data_editor(snow_df_co2)      
+            
             
             
 if __name__ == "__main__":
