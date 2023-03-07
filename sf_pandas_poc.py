@@ -5,10 +5,6 @@ import pandas as pd
 import streamlit as st
 from datetime import datetime
 from snowflake.snowpark.types import DecimalType
-from st_aggrid import AgGrid, GridUpdateMode, DataReturnMode
-from st_aggrid.grid_options_builder import GridOptionsBuilder
-from PIL import Image
-
 
 st.set_page_config(layout="wide")
 st.header("Snowflake Monitoring Framework")
