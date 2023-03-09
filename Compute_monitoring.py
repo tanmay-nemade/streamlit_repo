@@ -73,14 +73,14 @@ def wh_data(session):
             #st.dataframe(monthly_df,use_container_width=True)
             pd_monthly_df = pd.DataFrame(monthly_df.collect())
             selection = aggrid_interactive_table(df = pd_monthly_df)
-            print(selection)
             st.write(selection)
             
             st.write("---------------------------")
             
             if selection:
                 st.write("You selected:")
-                data = st.json(selection["selected_rows"][0])
+                data = selection["selected_rows"][0]
+                st.write(data)
                 #for value in data['Year-Month']:
                  #   print(value, ":", data['Year-Month'][value])
                 
