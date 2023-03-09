@@ -79,7 +79,9 @@ def wh_data(session):
             
             if selection:
                 st.write("You selected:")
-                st.json(selection["selected_rows"][0],expanded = True)
+                data = json.load(selection["selected_rows"][0],expanded = True)
+                for value in data['Year-Month']:
+                    print(value, ":", data['Year-Month'][value])
                 
                 
                 
