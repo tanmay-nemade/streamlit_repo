@@ -79,7 +79,7 @@ def wh_data(session):
             
             if selection:
                 st.write("You selected:")
-                data = selection["selected_rows"]
+                data = selection["selected_rows"][0]
                 st.write(data)
                 #for value in data['Year-Month']:
                  #   print(value, ":", data['Year-Month'][value])
