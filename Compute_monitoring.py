@@ -73,6 +73,7 @@ def wh_data(session):
             #st.dataframe(monthly_df,use_container_width=True)
             pd_monthly_df = pd.DataFrame(monthly_df.collect())
             selection = aggrid_interactive_table(df = pd_monthly_df)
+            print(selection)
             st.write(selection)
             
             st.write("---------------------------")
